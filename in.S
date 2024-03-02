@@ -1,14 +1,17 @@
 extern putchar
 
+global inputBuffer
+
+global get_input
+global setTermios
+global resetTermios
+
 SECTION .bss
-    inputBuffer resb 4
     termiosStruct resb 60
     originTermiosFlag resb 1
+    inputBuffer resb 256
 
 SECTION .text
-    global getArrowInput
-    global setTermios
-    global resetTermios
 
 setTermios:
     push rax
@@ -69,25 +72,24 @@ resetTermios:
     pop rax
     ret
 
-getArrowInput:
+get_input:               ; get_input(rdi int bufferLength, rsi byte *buffer)
+    push rbp
+    mov rbp, rsp
     push rax
     push rbx
     push rcx
     push rdx
-    push rsi
-    push rdi
 
+    mov rdx, rdi
     mov rax, 0
     mov rdi, 0
-    mov rsi, inputBuffer
-    mov rdx, 3
+    add rsp, 4
     syscall
 
-    pop rdi
-    pop rsi
     pop rdx
     pop rcx
     pop rbx
     pop rax
-
+    mov rsp, rbp
+    pop rbp
     ret

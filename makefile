@@ -1,7 +1,7 @@
 all: main
 
-main: main.o out.o in.o gameArea.o utils.o
-	ld main.o out.o in.o gameArea.o utils.o -o main
+main: main.o out.o in.o gameArea.o oper.o utils.o
+	ld main.o out.o in.o gameArea.o oper.o utils.o -o main
 
 out.o: out.S
 	nasm -f elf64 out.S -o out.o
@@ -11,6 +11,9 @@ in.o: in.S
 
 gameArea.o: gameArea.S
 	nasm -f elf64 gameArea.S -o gameArea.o
+
+oper.o: oper.S
+	nasm -f elf64 oper.S -o oper.o
 
 utils.o: utils.S
 	nasm -f elf64 utils.S -o utils.o
