@@ -5,4 +5,4 @@ To run the game:
 sudo apt install nasm
 ```
 2. Use make command to complie and link。用make指令编译和链接。
-3. You can run `./main` to play.
+3. You can run `./main` to play. 运行`./main`试试。
