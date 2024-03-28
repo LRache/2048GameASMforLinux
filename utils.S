@@ -6,12 +6,14 @@ SECTION .text
 
 random:
     push rbp
-    mov rbp, rsp
     push rbx
     push rcx
     push rdx
     push rsi
     push rdi
+
+    mov rbp, rsp
+    sub rsp, 8
 
     ; getrandom(char *ubuf, size_t len, unsigned int flags)
     mov rax, 318           ; getrandom 系统调用号

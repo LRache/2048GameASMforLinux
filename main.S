@@ -51,10 +51,6 @@ init_game:
         add rsi, 8
         loop .init_cell_numbers_loop
 
-    ;mov dword [cellNumbers+0], 0x01010101
-    ;mov dword [cellNumbers+4], 0x01010101
-    ;mov dword [cellNumbers+8], 0x01010101
-    ;mov dword [cellNumbers+12], 0x01010101
     call random_spawn_number
     call random_spawn_number
 
